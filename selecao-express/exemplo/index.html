@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Exemplo de entrega | RH Renováveis</title>
+<meta name="robots" content="noindex, nofollow">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,system-ui,sans-serif;background:#fff;color:#111827;font-size:14.5px;line-height:1.7}
+.topo{border-bottom:1px solid #E5E7EB}
+.topo .in{max-width:760px;margin:0 auto;padding:18px 24px;display:flex;justify-content:space-between;align-items:center}
+.marca{font-size:13px;font-weight:700;letter-spacing:.16em;color:#0d1b3e}
+.topo span{font-size:13px}
+main{max-width:760px;margin:0 auto;padding:34px 24px 70px}
+.nota{font-size:13px;border-left:3px solid #0d1b3e;padding:2px 0 2px 12px;margin-bottom:30px}
+h1{font-size:22px;font-weight:700;color:#0d1b3e;line-height:1.3}
+.vaga{margin-top:6px}
+h2{font-size:19px;font-weight:700;margin-top:34px;color:#0d1b3e}
+.quem{margin-top:4px}
+h3{font-size:14.5px;font-weight:700;margin:26px 0 10px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+td{padding:9px 0;border-bottom:1px solid #EEF0F3}
+td:last-child{text-align:right;font-weight:600;white-space:nowrap;padding-left:16px}
+.ok{color:#166534}.pa{color:#92400E}
+p{text-align:justify;margin-top:10px}
+.bts{display:flex;gap:10px;margin-top:30px;flex-wrap:wrap}
+.bts a,.bts button{height:38px;padding:0 16px;border:1px solid #0d1b3e;border-radius:7px;background:#fff;color:#0d1b3e;font:600 13px Inter,sans-serif;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center}
+.bts .cheio{background:#0d1b3e;color:#fff}
+.fundo{position:fixed;inset:0;background:rgba(17,24,39,.4);display:none;align-items:center;justify-content:center;padding:20px}
+.fundo.on{display:flex}
+.jan{background:#fff;border-radius:10px;max-width:380px;padding:24px 26px;text-align:center}
+.jan p{text-align:center;margin:0 0 18px}
+</style></head><body>
+<div class="topo"><div class="in"><div class="marca">RH RENOVÁVEIS</div><span>Seleção Express</span></div></div>
+<main>
+  <div class="nota">Exemplo de entrega com dados fictícios. Na entrega real, você recebe uma página como esta com os 5 candidatos da sua vaga.</div>
+
+  <h1>Vendedor Externo de Energia Solar</h1>
+  <div class="vaga">Empresa Exemplo, Campinas/SP</div>
+
+  <h2>Fernanda Rocha</h2>
+  <div class="quem">Campinas/SP. Consultora de vendas de energia solar há 3 anos.</div>
+
+  <h3>Requisitos da vaga: atende 5 de 6</h3>
+  <table>
+    <tr><td>Experiência em vendas externas</td><td class="ok">Atende</td></tr>
+    <tr><td>Experiência com energia solar</td><td class="ok">Atende</td></tr>
+    <tr><td>CNH B e veículo próprio</td><td class="ok">Atende</td></tr>
+    <tr><td>Mora em Campinas ou região</td><td class="ok">Atende</td></tr>
+    <tr><td>Ensino médio completo</td><td class="ok">Atende</td></tr>
+    <tr><td>Pretensão dentro da faixa (R$ 3 mil mais comissão)</td><td class="pa">Parcial</td></tr>
+  </table>
+
+  <p><b>Pontos fortes:</b> vende sistemas solares para residências há três anos, com média de R$ 140 mil por mês, e tem carteira própria de clientes na região, boa parte vinda de indicação. Na entrevista, trouxe números concretos e explicou com clareza como organiza o acompanhamento de cada proposta.</p>
+  <p><b>Pontos de atenção:</b> nunca vendeu para empresas, e o ticket médio dela é residencial. Pede R$ 3.500 de fixo, um pouco acima da faixa, mas disse que aceita conversar se a comissão compensar.</p>
+  <p><b>Parecer:</b> é a candidata mais completa da lista e já faz hoje o trabalho que a vaga pede. Vale a entrevista com o gestor, deixando a pretensão para o fim da conversa.</p>
+
+  <div class="bts">
+    <button type="button" onclick="aviso('currículo')">Currículo</button>
+    <a class="cheio" href="avaliacao-comportamental-fernanda-rocha.pdf" download>Avaliação comportamental</a>
+    <button type="button" onclick="aviso('LinkedIn')">LinkedIn</button>
+  </div>
+</main>
+<div class="fundo" id="fundo" onclick="this.classList.remove('on')">
+  <div class="jan"><p id="msg"></p><div class="bts" style="justify-content:center;margin:0"><button type="button">Entendi</button></div></div>
+</div>
+<script>
+function aviso(o){document.getElementById("msg").textContent="Este exemplo é fictício. Na entrega real, aqui abre o "+o+" do candidato.";document.getElementById("fundo").classList.add("on")}
+</script>
+</body></html>
