@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>DRE Grupo Merx</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<style>
+  /* Layout: cabeçalho, abas por empresa e uma tabela larga de 6 meses que rola na horizontal sem quebrar números. */
+  :root {
+    --bg: #ffffff; --fg: #2c3237; --muted: #687079; --accent: #1f5f99;
+    --line: #dde2e7; --soft: #f3f6f9; --neg: #b3412e; --pos: #2c3237;
+    --font: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) { --bg:#15191d; --fg:#dde3e8; --muted:#9aa4ad; --accent:#79aee0; --line:#2c343b; --soft:#1c2329; --neg:#e48c7b; --pos:#dde3e8; color-scheme: dark; }
+  }
+  :root[data-theme="dark"] { --bg:#15191d; --fg:#dde3e8; --muted:#9aa4ad; --accent:#79aee0; --line:#2c343b; --soft:#1c2329; --neg:#e48c7b; --pos:#dde3e8; color-scheme: dark; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--font); font-size: 15px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  .page { max-width: 1260px; margin: 0 auto; padding-block: 40px 56px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+  header { display: grid; gap: 6px; padding-bottom: 20px; border-bottom: 1px solid var(--line); }
+  .eyebrow { font-size: 11.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+  h1 { margin: 0; font-size: 28px; line-height: 1.2; color: var(--accent); font-weight: 700; letter-spacing: -.01em; }
+  .sub { margin: 0; color: var(--muted); font-size: 14px; }
+
+  .tabs { display: flex; flex-wrap: wrap; gap: 8px; margin: 24px 0 18px; }
+  .tab { font: inherit; font-size: 13.5px; font-weight: 500; color: var(--fg); background: transparent; border: 1px solid var(--line); border-radius: 18px; padding: 6px 14px; cursor: pointer; white-space: nowrap; }
+  .tab:hover { border-color: var(--accent); }
+  .tab:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .tab[aria-selected="true"] { background: var(--accent); border-color: var(--accent); color: var(--bg); font-weight: 600; }
+
+  h2 { margin: 0 0 4px; font-size: 19px; color: var(--accent); font-weight: 600; }
+  .resumo { margin: 0 0 14px; color: var(--muted); font-size: 14px; }
+
+  .table-wrap { overflow-x: auto; border-top: 1px solid var(--line); }
+  table { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nums; font-size: 13.5px; }
+  th, td { white-space: nowrap; padding: 11px 9px; text-align: right; border-bottom: 1px solid var(--line); }
+  th { font-size: 11.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+  th:first-child, td:first-child { text-align: left; position: sticky; left: 0; background: var(--bg); padding-left: 0; }
+  td.neg { color: var(--neg); }
+  tr.destaque td { font-weight: 700; background: var(--soft); }
+  tr.destaque td:first-child { background: var(--soft); padding-left: 10px; }
+  td.tot, th.tot { border-left: 1px solid var(--line); }
+
+  .notas { margin-top: 28px; display: grid; gap: 18px; grid-template-columns: 1fr 1fr; }
+  .notas > div { min-width: 0; }
+  .notas h3 { margin: 0 0 8px; font-size: 15px; font-weight: 600; }
+  .notas p, .notas li { margin: 0 0 8px; font-size: 13.5px; line-height: 1.65; text-align: justify; hyphens: auto; }
+  .notas ul { margin: 0; padding-left: 18px; }
+  footer { margin-top: 34px; padding-top: 12px; border-top: 1px solid var(--line); color: var(--muted); font-size: 12.5px; }
+  @media (max-width: 760px) { .notas { grid-template-columns: 1fr; } h1 { font-size: 23px; } }
+</style>
+</head>
+<body>
+<main class="page">
+  <header>
+    <span class="eyebrow">Merx Energia · Demonstração de resultado resumida</span>
+    <h1>DRE do Grupo Merx</h1>
+    <p class="sub">Abril a setembro de 2026 · valores em reais · fonte: DREs do contador, emitidos em 03/11/2026</p>
+  </header>
+
+  <nav class="tabs" role="tablist" id="tabs" aria-label="Empresas"></nav>
+
+  <section id="painel" role="tabpanel">
+    <h2 id="titulo"></h2>
+    <p class="resumo" id="resumo"></p>
+    <div class="table-wrap"><table id="tabela"></table></div>
+  </section>
+
+  <section class="notas">
+    <div>
+      <h3>O que é cada linha</h3>
+      <ul>
+        <li><b>Receita bruta:</b> tudo o que a empresa faturou no mês.</li>
+        <li><b>Impostos:</b> impostos sobre a venda (PIS, COFINS, ISS, Simples, ICMS e IR e CSLL), já descontados os créditos de PIS e COFINS das compras.</li>
+        <li><b>Custos diretos:</b> o custo do que foi vendido. Na comercializadora, a energia comprada para revender; na construtora, o material e o serviço de obra.</li>
+        <li><b>Margem bruta:</b> o que sobra da receita depois dos impostos e dos custos diretos.</li>
+        <li><b>Despesas operacionais:</b> os gastos para manter a empresa funcionando, que não variam com a venda: equipe, terceiros, aluguel, sistemas e tarifas bancárias.</li>
+        <li><b>Resultado:</b> o lucro ou prejuízo do mês, igual ao apurado pelo contador.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Pontos a confirmar com o financeiro</h3>
+      <ul>
+        <li>"Serviços prestados por terceiros" entrou nas despesas operacionais. Na Merx Construções, parte disso pode ser custo de obra; se for, a margem bruta diminui e o resultado não muda.</li>
+        <li>Se uma empresa do grupo fatura para outra, a receita do grupo está contada duas vezes.</li>
+        <li>Na Merx Comercializadora, a receita do DRE é 181 mil maior que a do relatório de faturamento.</li>
+        <li>Outubro ainda não está incluído.</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>RH Renováveis · Preparado por Pedro Drumond para a Merx Energia · Uso interno</footer>
+</main>
+
+<script>
+const DADOS = {"Grupo Merx (6 empresas)": {"receita": [2538581.55, 3553611.39, 2863914.9, 1531442.34, 2936494.15, 2486294.37], "impostos": [-68255.69, -110244.27, -231775.98, -74232.54, -99937.65, -208887.64], "custos": [-1967609.53, -2621645.18, -1765090.53, -863918.05, -2024755.31, -1558251.55], "margem": [502716.33, 821721.94, 867048.39, 593291.75, 811801.19, 719155.18], "despesas": [-403588.32, -422362.32, -293648.97, -284739.53, -234954.56, -446469.5], "resultado": [99128.01, 399359.62, 573399.42, 308552.22, 576846.63, 272685.68]}, "Merx Comercializadora": {"receita": [2030157.49, 2834998.95, 1891617.68, 969751.59, 2268504.37, 1770521.5], "impostos": [-34950.11, -50863.08, -31788.79, -33593.73, -51221.36, -49135.01], "custos": [-1958306.39, -2621645.18, -1765090.53, -860040.92, -2023588.29, -1558253.81], "margem": [36900.99, 162490.69, 94738.36, 76116.94, 193694.72, 163132.68], "despesas": [-121012.37, -143283.49, -86068.55, -90550.68, -97145.04, -214067.74], "resultado": [-84111.38, 19207.2, 8669.81, -14433.74, 96549.68, -50935.06]}, "Merx Consultoria": {"receita": [368159.02, 349602.78, 338697.47, 331480.66, 336839.77, 363540.8], "impostos": [-20801.05, -19752.63, -130594.16, -18728.73, -19031.51, -132567.31], "custos": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "margem": [347357.97, 329850.15, 208103.31, 312751.93, 317808.26, 230973.49], "despesas": [-125227.65, -143801.64, -104636.66, -55791.26, -53457.0, -112911.11], "resultado": [222130.32, 186048.51, 103466.65, 256960.67, 264351.26, 118062.38]}, "Merx Construções": {"receita": [48890.0, 220072.68, 629911.35, 155858.58, 112000.0, 0.0], "impostos": [-5141.6, -23214.23, -69393.03, -18262.46, -13367.11, 0.0], "custos": [-9303.14, 0.0, 0.0, -3877.13, -1169.9, 0.0], "margem": [34445.26, 196858.45, 560518.32, 133718.99, 97462.99, 0.0], "despesas": [-122665.68, -100190.7, -59651.87, -102882.73, -31121.97, -37300.28], "resultado": [-88220.42, 96667.75, 500866.45, 30836.26, 66341.02, -37300.28]}, "Merx Serviços": {"receita": [91375.04, 5044.49, 3688.4, 74351.51, 5379.68, 351032.07], "impostos": [-7362.93, -7780.79, 0.0, -3647.62, -436.44, -27068.24], "custos": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "margem": [84012.11, -2736.3, 3688.4, 70703.89, 4943.24, 323963.83], "despesas": [-29179.57, -18027.65, -16323.75, -23608.71, -23532.6, -36311.55], "resultado": [54832.54, -20763.95, -12635.35, 47095.18, -18589.36, 287652.28]}, "Azevedo Consultoria": {"receita": [0.0, 143892.49, 0.0, 0.0, 196934.33, 1200.0], "impostos": [0.0, -8633.54, 0.0, 0.0, -15572.66, -117.08], "custos": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "margem": [0.0, 135258.95, 0.0, 0.0, 181361.67, 1082.92], "despesas": [-4413.04, -4202.33, -25709.75, -10766.44, -15086.1, -44774.3], "resultado": [-4413.04, 131056.62, -25709.75, -10766.44, 166275.57, -43691.38]}, "SDI Comercializadora": {"receita": [0.0, 0.0, 0.0, 0.0, 16836.0, 0.0], "impostos": [0.0, 0.0, 0.0, 0.0, -308.57, 0.0], "custos": [0.0, 0.0, 0.0, 0.0, 2.88, 2.26], "margem": [0.0, 0.0, 0.0, 0.0, 16530.31, 2.26], "despesas": [-1090.01, -12856.51, -1258.39, -1139.71, -14611.85, -1104.52], "resultado": [-1090.01, -12856.51, -1258.39, -1139.71, 1918.46, -1102.26]}};
+const MESES = ["abr", "mai", "jun", "jul", "ago", "set"];
+const LINHAS = [
+  ["receita", "Receita bruta", false],
+  ["impostos", "(−) Impostos", false],
+  ["custos", "(−) Custos diretos", false],
+  ["margem", "= Margem bruta", true],
+  ["despesas", "(−) Despesas operacionais", false],
+  ["resultado", "= Resultado", true],
+];
+const fmt = v => {
+  const n = Math.round(v);
+  const s = Math.abs(n).toLocaleString("pt-BR", { maximumFractionDigits: 0 });
+  return (n < 0 ? "−" : "") + s;
+};
+const pct = v => (v * 100).toLocaleString("pt-BR", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + "%";
+const soma = a => a.reduce((x, y) => x + y, 0);
+const nomes = Object.keys(DADOS);
+const curto = n => n.startsWith("Grupo") ? "Geral (6 empresas)" : n;
+
+function mostrar(nome) {
+  const d = DADOS[nome];
+  document.querySelectorAll(".tab").forEach(b => b.setAttribute("aria-selected", b.dataset.nome === nome ? "true" : "false"));
+  document.getElementById("titulo").textContent = nome;
+  const rec = soma(d.receita), res = soma(d.resultado), mb = soma(d.margem);
+  document.getElementById("resumo").textContent =
+    `Nos 6 meses: receita de ${fmt(rec)}, margem bruta de ${fmt(mb)} (${rec ? pct(mb / rec) : "—"}) e resultado de ${fmt(res)}.`;
+  let h = "<thead><tr><th></th>" + MESES.map(m => `<th>${m}/26</th>`).join("") +
+          '<th class="tot">Total 6 meses</th><th>Média mensal</th><th>% da receita</th></tr></thead><tbody>';
+  for (const [k, rotulo, destaque] of LINHAS) {
+    const v = d[k], t = soma(v);
+    const c = x => (Math.round(x) < 0 ? ' class="neg"' : "");
+    h += `<tr${destaque ? ' class="destaque"' : ""}><td>${rotulo}</td>` +
+         v.map(x => `<td${c(x)}>${fmt(x)}</td>`).join("") +
+         `<td class="tot${Math.round(t) < 0 ? " neg" : ""}">${fmt(t)}</td><td${c(t)}>${fmt(t / 6)}</td><td>${rec ? pct(t / rec) : "—"}</td></tr>`;
+  }
+  document.getElementById("tabela").innerHTML = h + "</tbody>";
+}
+
+const tabs = document.getElementById("tabs");
+nomes.forEach((n, i) => {
+  const b = document.createElement("button");
+  b.className = "tab"; b.type = "button"; b.setAttribute("role", "tab");
+  b.dataset.nome = n; b.textContent = curto(n);
+  b.addEventListener("click", () => mostrar(n));
+  tabs.appendChild(b);
+});
+mostrar(nomes[0]);
+</script>
+</body>
+</html>
