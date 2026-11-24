@@ -122,7 +122,14 @@
   .btn:hover{background:#2552c9}
   .form small{display:block;font-size:12px;color:var(--muted);margin-top:10px}
 
-  .how{padding:56px 48px;display:grid;grid-template-columns:.8fr 1.2fr;gap:48px}
+  .how{padding:56px 48px}
+  .how-grid{display:grid;grid-template-columns:270px 1fr;gap:28px;align-items:stretch;margin-top:26px}
+  .video{display:block;width:100%;max-width:270px;aspect-ratio:9/16;border-radius:14px;background:#0d1b3e;border:1px solid var(--line)}
+  .passos{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:16px}
+  .passo{background:#fff;border:1px solid var(--line);border-radius:12px;padding:24px;display:flex;flex-direction:column;justify-content:center}
+  .passo .pn{width:34px;height:34px;border-radius:50%;background:#e9f0ff;color:var(--blue);font-weight:700;display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+  .passo b{display:block;font-size:16px;color:var(--navy);margin-bottom:6px}
+  .passo span{font-size:15px;color:var(--ink);line-height:1.6}
   .how h2,.deliver h2,.faq h2{font-family:var(--serif);font-weight:500;font-size:30px;line-height:1.15}
   .how ol{list-style:none;counter-reset:s}
   .how li{counter-increment:s;display:grid;grid-template-columns:44px 1fr;padding:16px 0;border-bottom:1px solid var(--line)}
@@ -160,6 +167,7 @@
     .hero{padding:28px 20px 40px}
     nav.top{margin-bottom:36px}
     .hero-grid,.how,.deliver,.faq{grid-template-columns:1fr;gap:28px}
+    .how-grid{grid-template-columns:1fr;justify-items:center}.passos{width:100%}
     .hero h1{font-size:34px}
     .how,.deliver,.faq{padding:40px 20px}
     .foot{padding:20px}
@@ -216,12 +224,15 @@
 
     <section class="how">
       <h2>Como funciona</h2>
-      <ol>
-        <li><div><b>Conte sobre a vaga</b><span>Pelo WhatsApp, o nosso assistente entende o cargo, a faixa salarial e os requisitos.</span></div></li>
-        <li><div><b>Confirmamos a vaga</b><span>A equipe analisa e responde pelo WhatsApp.</span></div></li>
-        <li><div><b>Busca e entrevistas</b><span>Em até 10 dias, buscamos no mercado, entrevistamos e aplicamos o teste comportamental.</span></div></li>
-        <li><div><b>Resumo e pagamento</b><span>Você recebe um resumo dos 5 candidatos e paga R$ 499, por Pix ou cartão, para liberar o acesso completo: nome, currículo e teste comportamental de cada um.</span></div></li>
-      </ol>
+      <div class="how-grid">
+        <video class="video" src="video-selecao-express.mp4#t=0.5" controls playsinline preload="metadata"></video>
+        <div class="passos">
+          <div class="passo"><div class="pn">1</div><b>Conte sobre a vaga</b><span>Pelo WhatsApp, o nosso assistente entende o cargo, a faixa salarial e os requisitos.</span></div>
+          <div class="passo"><div class="pn">2</div><b>Confirmamos a vaga</b><span>A equipe analisa e responde pelo WhatsApp.</span></div>
+          <div class="passo"><div class="pn">3</div><b>Busca e entrevistas</b><span>Em até 10 dias, buscamos no mercado, entrevistamos e aplicamos o teste comportamental.</span></div>
+          <div class="passo"><div class="pn">4</div><b>Resumo e pagamento</b><span>Você recebe um resumo dos 5 candidatos e paga R$ 499, por Pix ou cartão, para liberar o acesso completo: nome, currículo e teste comportamental de cada um.</span></div>
+        </div>
+      </div>
     </section>
 
     <section class="deliver">
@@ -230,7 +241,7 @@
         <ul>
           <li><svg width="16" height="16"><use href="#ck"/></svg>5 candidatos entrevistados por especialistas em recrutamento e seleção</li>
           <li><svg width="16" height="16"><use href="#ck"/></svg>Currículo de cada um</li>
-          <li><svg width="16" height="16"><use href="#ck"/></svg>Teste comportamental com os pontos fortes e os pontos de atenção de cada candidato</li>
+          <li><svg width="16" height="16"><use href="#ck"/></svg><span>Teste comportamental com os pontos fortes e os pontos de atenção de cada candidato · <a href="/selecao-express/exemplo/avaliacao-comportamental-fernanda-rocha.pdf" download style="color:var(--blue);font-weight:600">baixar um exemplo</a></span></li>
           <li><svg width="16" height="16"><use href="#ck"/></svg>Classificação da compatibilidade de cada candidato com a vaga</li>
           <li><svg width="16" height="16"><use href="#ck"/></svg>Candidatos dentro do perfil, da faixa salarial e dos requisitos</li>
         </ul>
@@ -239,7 +250,6 @@
         <div class="v">R$ 499 <small>por vaga</small></div>
         <p>Entrega em até 10 dias.</p>
         <a class="btn" href="#caixa" style="text-align:center;text-decoration:none">Iniciar o processo</a>
-        <a href="/selecao-express/exemplo/" style="display:block;text-align:center;margin-top:12px;font-size:14px;font-weight:600;color:var(--navy)">Ver um exemplo da entrega</a>
       </div>
     </section>
 
